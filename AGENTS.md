@@ -4,19 +4,19 @@ This file provides guidance to AI coding agents when working with code in this r
 
 ## Project Overview
 
-exo is a distributed AI inference system that connects multiple devices into a cluster. It enables running large language models across multiple machines using MLX as the inference backend and libp2p for peer-to-peer networking.
+dexo is a decentralized autonomous reasoning engine for Darbot Language Model. It connects multiple devices into a distributed AI inference cluster with autonomous reasoning capabilities. It enables running large language models across multiple machines using MLX as the inference backend and libp2p for peer-to-peer networking.
 
 ## Build & Run Commands
 
 ```bash
-# Build the dashboard (required before running exo)
+# Build the dashboard (required before running dexo)
 cd dashboard && npm install && npm run build && cd ..
 
-# Run exo (starts both master and worker with API at http://localhost:52415)
-uv run exo
+# Run dexo (starts both master and worker with API at http://localhost:52415)
+uv run dexo
 
 # Run with verbose logging
-uv run exo -v   # or -vv for more verbose
+uv run dexo -v   # or -vv for more verbose
 
 # Run tests (excludes slow tests by default)
 uv run pytest
@@ -25,10 +25,10 @@ uv run pytest
 uv run pytest -m ""
 
 # Run a specific test file
-uv run pytest src/exo/shared/tests/test_election.py
+uv run pytest src/dexo/shared/tests/test_election.py
 
 # Run a specific test function
-uv run pytest src/exo/shared/tests/test_election.py::test_function_name
+uv run pytest src/dexo/shared/tests/test_election.py::test_function_name
 
 # Type checking (strict mode)
 uv run basedpyright
@@ -68,7 +68,7 @@ If `nix fmt` changes any files, stage them before committing. The CI runs `nix f
 ## Architecture
 
 ### Node Composition
-A single exo `Node` (src/exo/main.py) runs multiple components:
+A single dexo `Node` (src/dexo/main.py) runs multiple components:
 - **Router**: libp2p-based pub/sub messaging via Rust bindings (exo_pyo3_bindings)
 - **Worker**: Handles inference tasks, downloads models, manages runner processes
 - **Master**: Coordinates cluster state, places model instances across nodes
@@ -76,7 +76,7 @@ A single exo `Node` (src/exo/main.py) runs multiple components:
 - **API**: FastAPI server for OpenAI-compatible chat completions
 
 ### Message Flow
-Components communicate via typed pub/sub topics (src/exo/routing/topics.py):
+Components communicate via typed pub/sub topics (src/dexo/routing/topics.py):
 - `GLOBAL_EVENTS`: Master broadcasts indexed events to all workers
 - `LOCAL_EVENTS`: Workers send events to master for indexing
 - `COMMANDS`: Workers/API send commands to master
@@ -85,12 +85,12 @@ Components communicate via typed pub/sub topics (src/exo/routing/topics.py):
 
 ### Event Sourcing
 The system uses event sourcing for state management:
-- `State` (src/exo/shared/types/state.py): Immutable state object
-- `apply()` (src/exo/shared/apply.py): Pure function that applies events to state
+- `State` (src/dexo/shared/types/state.py): Immutable state object
+- `apply()` (src/dexo/shared/apply.py): Pure function that applies events to state
 - Master indexes events and broadcasts; workers apply indexed events
 
 ### Key Type Hierarchy
-- `src/exo/shared/types/`: Pydantic models for all shared types
+- `src/dexo/shared/types/`: Pydantic models for all shared types
   - `events.py`: Event types (discriminated union)
   - `commands.py`: Command types
   - `tasks.py`: Task types for worker execution

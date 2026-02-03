@@ -1,15 +1,15 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: light)" srcset="/docs/imgs/exo-logo-black-bg.jpg">
-  <img alt="exo logo" src="/docs/imgs/exo-logo-transparent.png" width="50%" height="50%">
+  <source media="(prefers-color-scheme: light)" srcset="/docs/imgs/dexo-logo-black-bg.jpg">
+  <img alt="dexo logo" src="/docs/imgs/dexo-logo-transparent.png" width="50%" height="50%">
 </picture>
 
-exo: Run frontier AI locally. Maintained by [exo labs](https://x.com/exolabs).
+dexo: Decentralized Autonomous Reasoning Engine for Darbot Language Model. Run frontier AI locally. Maintained by [Darbot Labs](https://x.com/darbotlabs).
 
 <p align="center">
   <a href="https://discord.gg/TJ4P57arEm" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Discord-Join%20Server-5865F2?logo=discord&logoColor=white" alt="Discord"></a>
-  <a href="https://x.com/exolabs" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/twitter/follow/exolabs?style=social" alt="X"></a>
+  <a href="https://x.com/darbotlabs" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/twitter/follow/darbotlabs?style=social" alt="X"></a>
   <a href="https://www.apache.org/licenses/LICENSE-2.0.html" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/License-Apache2.0-blue.svg" alt="License: Apache-2.0"></a>
 </p>
 
@@ -17,22 +17,25 @@ exo: Run frontier AI locally. Maintained by [exo labs](https://x.com/exolabs).
 
 ---
 
-exo connects all your devices into an AI cluster. Not only does exo enable running models larger than would fit on a single device, but with [day-0 support for RDMA over Thunderbolt](https://x.com/exolabs/status/2001817749744476256?s=20), makes models run faster as you add more devices.
+dexo connects all your devices into an AI cluster with autonomous reasoning capabilities. Not only does dexo enable running models larger than would fit on a single device, but with [day-0 support for RDMA over Thunderbolt](https://x.com/darbotlabs/status/2001817749744476256?s=20), makes models run faster as you add more devices.
 
 ## Features
 
-- **Automatic Device Discovery**: Devices running exo automatically discover each other - no manual configuration.
-- **RDMA over Thunderbolt**: exo ships with [day-0 support for RDMA over Thunderbolt 5](https://x.com/exolabs/status/2001817749744476256?s=20), enabling 99% reduction in latency between devices.
-- **Topology-Aware Auto Parallel**: exo figures out the best way to split your model across all available devices based on a realtime view of your device topology. It takes into account device resources and network latency/bandwidth between each link.
-- **Tensor Parallelism**: exo supports sharding models, for up to 1.8x speedup on 2 devices and 3.2x speedup on 4 devices.
-- **MLX Support**: exo uses [MLX](https://github.com/ml-explore/mlx) as an inference backend and [MLX distributed](https://ml-explore.github.io/mlx/build/html/usage/distributed.html) for distributed communication.
+- **Autonomous Reasoning Engine**: Built-in SWE-agent for code analysis, generation, and testing
+- **Resource Swarm Coordination**: Autogen2 integration for intelligent resource allocation and continuous learning
+- **Terminal User Interface**: Rich TUI for monitoring and managing your AI cluster
+- **Automatic Device Discovery**: Devices running dexo automatically discover each other - no manual configuration.
+- **RDMA over Thunderbolt**: dexo ships with [day-0 support for RDMA over Thunderbolt 5](https://x.com/darbotlabs/status/2001817749744476256?s=20), enabling 99% reduction in latency between devices.
+- **Topology-Aware Auto Parallel**: dexo figures out the best way to split your model across all available devices based on a realtime view of your device topology. It takes into account device resources and network latency/bandwidth between each link.
+- **Tensor Parallelism**: dexo supports sharding models, for up to 1.8x speedup on 2 devices and 3.2x speedup on 4 devices.
+- **MLX Support**: dexo uses [MLX](https://github.com/ml-explore/mlx) as an inference backend and [MLX distributed](https://ml-explore.github.io/mlx/build/html/usage/distributed.html) for distributed communication.
 
 ## Dashboard
 
-exo includes a built-in dashboard for managing your cluster and chatting with models.
+dexo includes a built-in dashboard for managing your cluster and chatting with models.
 
 <p align="center">
-  <img src="docs/imgs/dashboard-cluster-view.png" alt="exo dashboard - cluster view showing 4 x M3 Ultra Mac Studio with DeepSeek v3.1 and Kimi-K2-Thinking loaded" width="80%" />
+  <img src="docs/imgs/dashboard-cluster-view.png" alt="dexo dashboard - cluster view showing 4 x M3 Ultra Mac Studio with DeepSeek v3.1 and Kimi-K2-Thinking loaded" width="80%" />
 </p>
 <p align="center"><em>4 × 512GB M3 Ultra Mac Studio running DeepSeek v3.1 (8-bit) and Kimi-K2-Thinking (4-bit)</em></p>
 
@@ -66,9 +69,9 @@ exo includes a built-in dashboard for managing your cluster and chatting with mo
 
 ## Quick Start
 
-Devices running exo automatically discover each other, without needing any manual configuration. Each device provides an API and a dashboard for interacting with your cluster (runs at `http://localhost:52415`).
+Devices running dexo automatically discover each other, without needing any manual configuration. Each device provides an API, a dashboard, and a terminal user interface for interacting with your cluster (runs at `http://localhost:52415`).
 
-There are two ways to run exo:
+There are multiple ways to run dexo:
 
 ### Run from Source (macOS)
 
@@ -92,20 +95,23 @@ There are two ways to run exo:
   rustup toolchain install nightly
   ```
 
-Clone the repo, build the dashboard, and run exo:
+Clone the repo, build the dashboard, and run dexo:
 
 ```bash
-# Clone exo
-git clone https://github.com/exo-explore/exo
+# Clone dexo
+git clone https://github.com/darbotlabs/dexo
 
 # Build dashboard
-cd exo/dashboard && npm install && npm run build && cd ..
+cd dexo/dashboard && npm install && npm run build && cd ..
 
-# Run exo
-uv run exo
+# Run dexo (web dashboard)
+uv run dexo
+
+# Or run dexo with Terminal UI
+uv run dexo-tui
 ```
 
-This starts the exo dashboard and API at http://localhost:52415/
+This starts the dexo dashboard and API at http://localhost:52415/
 
 
 *Please view the section on RDMA to enable this feature on MacOS >=26.2!*
@@ -150,46 +156,46 @@ rustup toolchain install nightly
 
 **Note:** The `macmon` package is macOS-only and not required for Linux.
 
-Clone the repo, build the dashboard, and run exo:
+Clone the repo, build the dashboard, and run dexo:
 
 ```bash
-# Clone exo
-git clone https://github.com/exo-explore/exo
+# Clone dexo
+git clone https://github.com/darbotlabs/dexo
 
 # Build dashboard
-cd exo/dashboard && npm install && npm run build && cd ..
+cd dexo/dashboard && npm install && npm run build && cd ..
 
-# Run exo
-uv run exo
+# Run dexo
+uv run dexo
 ```
 
-This starts the exo dashboard and API at http://localhost:52415/
+This starts the dexo dashboard and API at http://localhost:52415/
 
-**Important note for Linux users:** Currently, exo runs on CPU on Linux. GPU support for Linux platforms is under development. If you'd like to see support for your specific Linux hardware, please [search for existing feature requests](https://github.com/exo-explore/exo/issues) or create a new one.
+**Important note for Linux users:** Currently, dexo runs on CPU on Linux. GPU support for Linux platforms is under development. If you'd like to see support for your specific Linux hardware, please [search for existing feature requests](https://github.com/darbotlabs/dexo/issues) or create a new one.
 
 **Configuration Options:**
 
-- `--no-worker`: Run exo without the worker component. Useful for coordinator-only nodes that handle networking and orchestration but don't execute inference tasks. This is helpful for machines without sufficient GPU resources but with good network connectivity.
+- `--no-worker`: Run dexo without the worker component. Useful for coordinator-only nodes that handle networking and orchestration but don't execute inference tasks. This is helpful for machines without sufficient GPU resources but with good network connectivity.
 
   ```bash
-  uv run exo --no-worker
+  uv run dexo --no-worker
   ```
 
 **File Locations (Linux):**
 
-exo follows the [XDG Base Directory Specification](https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html) on Linux:
+dexo follows the [XDG Base Directory Specification](https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html) on Linux:
 
-- **Configuration files**: `~/.config/exo/` (or `$XDG_CONFIG_HOME/exo/`)
-- **Data files**: `~/.local/share/exo/` (or `$XDG_DATA_HOME/exo/`)
-- **Cache files**: `~/.cache/exo/` (or `$XDG_CACHE_HOME/exo/`)
+- **Configuration files**: `~/.config/dexo/` (or `$XDG_CONFIG_HOME/dexo/`)
+- **Data files**: `~/.local/share/dexo/` (or `$XDG_DATA_HOME/dexo/`)
+- **Cache files**: `~/.cache/dexo/` (or `$XDG_CACHE_HOME/dexo/`)
 
 You can override these locations by setting the corresponding XDG environment variables.
 
 ### macOS App
 
-exo ships a macOS app that runs in the background on your Mac.
+dexo ships a macOS app that runs in the background on your Mac.
 
-<img src="docs/imgs/macos-app-one-macbook.png" alt="exo macOS App - running on a MacBook" width="35%" />
+<img src="docs/imgs/macos-app-one-macbook.png" alt="dexo macOS App - running on a MacBook" width="35%" />
 
 The macOS app requires macOS Tahoe 26.2 or later.
 
@@ -199,10 +205,10 @@ The app will ask for permission to modify system settings and install a new Netw
 
 **Custom Namespace for Cluster Isolation:**
 
-The macOS app includes a custom namespace feature that allows you to isolate your exo cluster from others on the same network. This is configured through the `EXO_LIBP2P_NAMESPACE` setting:
+The macOS app includes a custom namespace feature that allows you to isolate your dexo cluster from others on the same network. This is configured through the `EXO_LIBP2P_NAMESPACE` setting:
 
 - **Use cases**:
-  - Running multiple separate exo clusters on the same network
+  - Running multiple separate dexo clusters on the same network
   - Isolating development/testing clusters from production clusters
   - Preventing accidental cluster joining
 
@@ -217,14 +223,14 @@ The recommended way to uninstall is through the app itself: click the menu bar i
 If you've already deleted the app, you can run the standalone uninstaller script:
 
 ```bash
-sudo ./app/EXO/uninstall-exo.sh
+sudo ./app/EXO/uninstall-dexo.sh
 ```
 
 This removes:
 - Network setup LaunchDaemon
 - Network configuration script
 - Log files
-- The "exo" network location
+- The "dexo" network location
 
 **Note:** You'll need to manually remove EXO from Login Items in System Settings → General → Login Items.
 
@@ -249,7 +255,7 @@ To enable RDMA on macOS, follow these steps:
    and press Enter.
 6. Reboot your Mac.
 
-After that, RDMA will be enabled in macOS and exo will take care of the rest.
+After that, RDMA will be enabled in macOS and dexo will take care of the rest.
 
 **Important Caveats**
 
@@ -263,7 +269,7 @@ After that, RDMA will be enabled in macOS and exo will take care of the rest.
 
 ### Using the API
 
-If you prefer to interact with exo via the API, here is an example creating an instance of a small model (`mlx-community/Llama-3.2-1B-Instruct-4bit`), sending a chat completions request and deleting the instance.
+If you prefer to interact with dexo via the API, here is an example creating an instance of a small model (`mlx-community/Llama-3.2-1B-Instruct-4bit`), sending a chat completions request and deleting the instance.
 
 ---
 
@@ -360,16 +366,16 @@ curl -X DELETE http://localhost:52415/instance/YOUR_INSTANCE_ID
 For further details, see:
 
 - API basic documentation in [docs/api.md](docs/api.md).
-- API types and endpoints in [src/exo/master/api.py](src/exo/master/api.py).
+- API types and endpoints in [src/dexo/master/api.py](src/dexo/master/api.py).
 
 ---
 
 ## Benchmarking
 
-The `exo-bench` tool measures model prefill and token generation speed across different placement configurations. This helps you optimize model performance and validate improvements.
+The `dexo-bench` tool measures model prefill and token generation speed across different placement configurations. This helps you optimize model performance and validate improvements.
 
 **Prerequisites:**
-- Nodes should be running with `uv run exo` before benchmarking
+- Nodes should be running with `uv run dexo` before benchmarking
 - The tool uses the `/bench/chat/completions` endpoint
 
 **Basic usage:**
@@ -412,10 +418,10 @@ The tool outputs performance metrics including prompt tokens per second (prompt_
 
 ## Hardware Accelerator Support
 
-On macOS, exo uses the GPU. On Linux, exo currently runs on CPU. We are working on extending hardware accelerator support. If you'd like support for a new hardware platform, please [search for an existing feature request](https://github.com/exo-explore/exo/issues) and add a thumbs up so we know what hardware is important to the community.
+On macOS, dexo uses the GPU. On Linux, dexo currently runs on CPU. We are working on extending hardware accelerator support. If you'd like support for a new hardware platform, please [search for an existing feature request](https://github.com/darbotlabs/dexo/issues) and add a thumbs up so we know what hardware is important to the community.
 
 ---
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on how to contribute to exo.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on how to contribute to dexo.
