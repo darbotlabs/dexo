@@ -1,7 +1,7 @@
 [project]
-name = "exo"
+name = "dexo"
 version = "0.3.0"
-description = "Exo"
+description = "Dexo - Decentralized Autonomous Reasoning Engine for Darbot Language Model"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
@@ -28,12 +28,17 @@ dependencies = [
     "pillow>=11.0,<12.0", # compatibility with mflux
     "mflux==0.15.4",
     "python-multipart>=0.0.21",
+    "textual>=1.0.0", # TUI framework
+    "rich>=13.0.0", # Rich text and formatting for TUI
+    "ag2[openai]>=0.8.0", # Autogen2 for agent swarm coordination
 ]
 
 [project.scripts]
-exo-master = "exo.master.main:main"
-exo-worker = "exo.worker.main:main"
-exo = "exo.main:main"
+dexo-master = "exo.master.main:main"
+dexo-worker = "exo.worker.main:main"
+dexo = "exo.main:main"
+dexo-tui = "exo.tui.main:main"
+dexo-swe = "exo.swe_agent.main:main"
 
 # dependencies only required for development
 [dependency-groups]
